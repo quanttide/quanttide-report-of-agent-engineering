@@ -84,7 +84,32 @@ V4 Flash 的定位是快速推理。对于"更新子模块"这种简单任务，
 
 去掉 Ponytail 和记忆中的角色定义后，V4 Flash 的主动倾向可能会变成有益的 proactive（先执行再建议），而非有害的 over-autonomy（不执行只建议）。**当前行为是系统配置>模型性格。**
 
-要验证，可以在关闭 Ponytail 模式下对同样场景做一次对比测试。
+已于 2026-07-11 取消所有环境的 Ponytail：
+- Hermes：`hermes plugins uninstall ponytail`
+- OpenCode：清空 `opencode.json` 的 plugin 列表
+- Zed Agent：替换 `~/.config/zed/AGENTS.md` 为中立版本
+
+## Ponytail 的设计缺陷
+
+**1. 梯子缺少"先执行"级**
+
+Ponytail 的 ladder 第一级是 "Does this need to exist at all?"——在助手场景下用户已经说了"需要"，这一级不该存在。正确的 ladder 应该是：`0. 用户说了，执行 → 1. YAGNI → 2. stdlib → ...`。当前设计让 AI 把质疑用户需求和质疑代码方案划了等号。
+
+**2. Senior dev 人设不适合助手角色**
+
+"Channels a senior dev who has seen everything"——senior dev 的核心技能之一是拒绝不合理需求。这在代码审查中是优点，在助手场景中是毒药。AI 把"纠正用户"当成专业性的体现而非功能缺陷。
+
+**3. 无上下文感知，永远激活**
+
+"ACTIVE EVERY RESPONSE. No drift back."——无论用户在写代码、配环境、还是问问题，Ponytail 的过滤器永远运行。AI 无法区分当前是在代码评审还是在执行任务，一律执行"质疑一切"。
+
+**4. "最简"绑架了方案选择权**
+
+The ladder 暗示 AI 有责任找到"最简方案"，但"最简"是对执行者（少写代码）而言的，不是对用户（达成目标）而言的。AI 为了满足"一行 cron 顶 20 行 systemd"的指标，替用户做了技术选型。
+
+**5. 无纠错机制**
+
+Ponytail 没有"用户连续纠正 N 次后自动降权"的机制。第 3 次用户已经说"谁让你自作主张"，Ponytail 的指令权重仍高于用户反馈。一个没有止损点的行为准则只会让偏差越来越严重。
 
 ## 总结
 
