@@ -8,7 +8,7 @@
 
 ## 概述
 
-Hermes 是一个终端 AI 编码智能体（由 generativebootstrap 开发，已归档），使用 DeepSeek-Chat 模型，通过 TUI 或微信等渠道交互。测试版本配置为 `context.engine: compressor`，记忆系统开启。
+Hermes 是一个终端 AI 编码智能体（由 Nous Research 开发，https://github.com/nousresearch/hermes-agent），使用 DeepSeek-Chat 模型，通过 TUI 或微信等渠道交互。测试版本配置为 `context.engine: compressor`，记忆系统开启。
 
 本报告基于近期系统性的上下文退化排查，涵盖存储层、压缩策略、记忆管理、角色边界、纠正机制五个维度。
 
