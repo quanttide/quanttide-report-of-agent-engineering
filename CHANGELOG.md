@@ -3,7 +3,7 @@
 ## [Unreleased]
 
 ### Added
-- AGENTS.md 报告（agents/agents-md.md）——核心发现、原因推测、理想状况、改进建议
+- AGENTS.md 报告（agents/agents-md.md）——按规范数出 17 条、四簇；核心结论为「17 条里 15 条只有文字、没有落点，散在 2–7 个地方恰说明规矩没生效」
 
 ## [0.1.0] - 2026-06-22
 
