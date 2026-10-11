@@ -1,5 +1,10 @@
 # CHANGELOG
 
+## [Unreleased]
+
+### Added
+- AGENTS.md 报告（agents/agents-md.md）——核心发现、原因推测、理想状况、改进建议
+
 ## [0.1.0] - 2026-06-22
 
 ### Added
